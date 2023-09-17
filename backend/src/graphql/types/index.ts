@@ -1,8 +1,9 @@
-import path from "path";
-import { loadFilesSync } from "@graphql-tools/load-files";
 import { mergeTypeDefs } from "@graphql-tools/merge";
+import userTypeDefs from "./User";
+import scalarTypeDefs from "./Scalar";
 
-const typesArray = loadFilesSync(path.join(__dirname, "./"), {
-  extensions: ["graphql"],
-});
-export default mergeTypeDefs(typesArray);
+const typesArray = [userTypeDefs, scalarTypeDefs];
+
+const mergedTypeDefs = mergeTypeDefs(typesArray);
+
+export default mergedTypeDefs;
